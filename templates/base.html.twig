@@ -28,7 +28,7 @@
          </li>
          <li>ajouté au catalogue le : {{ (product.createdAt|dateFr) }}</li>
         <li>
-            <a href="{{ path('product_show', {id: product.id) }}">Voir la fiche</a>
+            <a href="{{ path('product_show', {id: product.id }) }}">Voir la fiche</a>
         </li>
     </ul>
     {% else %}
