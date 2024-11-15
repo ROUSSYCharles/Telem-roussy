@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
@@ -14,6 +14,23 @@
         {% endblock %}
     </head>
     <body>
+    <h1>Hello World !</h1>
+    {% for product in products %}
+    <ul>
+        <li>nom du produit : {{ product.name }}</li>
+        {% if product.description is not empty %}
+        <li>description du produit : {{ product.description }}</li>
+        {% endif %}
+         <li>quantité en stock du produit : {{ product.quantityInStock }}</li>
+         <li>prix du produit : {{ (product.price/100)|number_format(2) }} €</li>
+         <li>
+             <img src="/build/images/{{ product.imageName }}">
+         </li>
+         <li>ajouté au catalogue le : {{ (product.createdAt|date('d/m/Y')) }}</li>
+    </ul>
+    {% else %}
+        <p>Il n'y a aucun produit.</p>
+    {% endfor %}
         {% block body %}{% endblock %}
     </body>
 </html>
