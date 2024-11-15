@@ -6,6 +6,7 @@ use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 use Twig\TwigFunction;
 
+// Command = symfony console make:twig-extension
 class AppExtension extends AbstractExtension
 {
     // Tableau contenant nos filtres twig
