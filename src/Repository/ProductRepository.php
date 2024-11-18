@@ -27,6 +27,28 @@ class ProductRepository extends ServiceEntityRepository
         ->select($this->alias);
     }
 
+    /**
+     * Initialise le query builder avec la fonction agrégative COUNT sur l'attribut clé primaire (aucun élément null ignoré par la fonction count)
+     * @return void
+     */
+    private function initializeQueryBuilderWithCount(): void {
+        $this->qb = $this->createQueryBuilder($this->alias)
+            ->select("COUNT($this->alias.id)");
+    }
+
+    // Query builder mobilisant filtres et/ou jointures
+
+    /**
+     * QueryBuilder qui cherche tous les items contenant la chaîne passée en argument.
+     * @return void
+     */
+    private function searchQb(string $keyword): void {
+         // recherche sur le nom
+        $this->orPropertyLike('name', $keyword);
+        // recherche sur la description
+        $this->orPropertyLike('description', $keyword);
+    }
+
     // Filtres
 
     /**
@@ -61,15 +83,18 @@ class ProductRepository extends ServiceEntityRepository
             ->setParameter($propertyName, '%'.$keyword.'%');
     }
 
-    // Recherche
+    // Recherches
 
     public function search(string $keyword): array {
         $this->initializeQueryBuilder();
-        // recherche sur le nom
-        $this->orPropertyLike('name', $keyword);
-        // recherche sur la description
-        $this->orPropertyLike('description', $keyword);
-
+        $this->searchQb($keyword);
         return $this->qb->getQuery()->getResult();
+    }
+
+    public function searchCount(string $keyword): int {
+        $this->initializeQueryBuilderWithCount();
+        $this->searchQb($keyword);
+
+        return $this->qb->getQuery()->getSingleScalarResult(); // récupération d'un unique résultat
     }
 }
