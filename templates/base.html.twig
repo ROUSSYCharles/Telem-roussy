@@ -17,7 +17,7 @@
 <body class="LayoutContainer">
 <header class="Header LayoutContainer_header">
     <p class="Brand -big -sober Header_brand">Telem</p>
-    <form class="Header_banner Search " action="" method="post">
+    <form class="Header_banner Search " action="{{ path('product_search') }}" method="post">
         <input class="Search_input" type="text" name="searchProduct" placeholder="rechercher un produit">
         <button class="Search_button" type="submit">&#X1F50E</button>
     </form>
