@@ -1,0 +1,37 @@
+/* ******* couleur du thème ******* */
+$color-base: #005d80;
+
+/* ******* Brand ******* */
+$brand-bg-color: #ff8119;
+$brand-font-color: #fff;
+$brand-font-family: 'Oxygen', sans-serif;
+
+/* ******* Card ******* */
+$card-border-color: #d5e3ec;
+$card-border-color-hover: darken($card-border-color, 20%);
+
+/* ******* Footer ******* */
+$footer-bg-color: $color-base;
+
+/* ******* Header ******* */
+$header-bg-color: $color-base;
+
+/* ******* MainContent ******* */
+$mainContent-bg-color: #f7fafb;
+
+/* ******* MainMenu ******* */
+$mainMenu-bg-color: #d5e3ec;
+
+/* ******* padding ******* */
+$padding-small: 2px;
+$padding-base: 5px;
+$padding-big: 10px;
+$padding-biggest: 15px;
+
+/* ******* margin ******* */
+$margin-small: 2px;
+$margin-base: 5px;
+$margin-big: 10px;
+$margin-biggest: 15px;
+
+

@@ -1,5 +1,22 @@
+// imports prioritaires
+@import "_font";
+
+// imports variables avant leur utilisation
+@import "_vars";
+
+// initialisations diverses
 @import "_reset";
 @import "_initFont";
+
+// blocs
 @import "_Card";
 @import "_Image";
 @import "_CardCollection";
+@import "_Header";
+@import "_MainMenu";
+@import "_MainContent";
+@import "_Footer";
+@import "_Brand";
+@import "_LayoutContainer";
+
+// css transversale
