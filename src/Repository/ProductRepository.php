@@ -58,7 +58,7 @@ class ProductRepository extends ServiceEntityRepository
      */
     private function orPropertyLike(string $propertyName, string $keyword): void {
         $this->qb->orWhere("$this->alias.$propertyName LIKE :$propertyName")
-            ->setParameter('$propertyName', '%'.$keyword.'%');
+            ->setParameter($propertyName, '%'.$keyword.'%');
     }
 
     // Recherche
