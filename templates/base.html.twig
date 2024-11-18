@@ -16,25 +16,6 @@
     <body>
     <h1>Hello World !</h1>
     <p>Contenu base.html.twig</p>
-    {% for product in products %}
-    <ul>
-        <li>nom du produit : {{ product.name }}</li>
-        {% if product.description is not empty %}
-        <li>description du produit : {{ product.description }}</li>
-        {% endif %}
-         <li>quantité en stock du produit : {{ product.quantityInStock }}</li>
-         <li>prix du produit : {{ (product.price|price) }}</li>
-         <li>
-             <img src="/build/images/{{ product.imageName }}">
-         </li>
-         <li>ajouté au catalogue le : {{ (product.createdAt|dateFr) }}</li>
-        <li>
-            <a href="{{ path('product_show', {id: product.id }) }}">Voir la fiche</a>
-        </li>
-    </ul>
-    {% else %}
-        <p>Il n'y a aucun produit.</p>
-    {% endfor %}
-        {% block body %}{% endblock %}
+    {% block body %}{% endblock %}
     </body>
 </html>

@@ -7,7 +7,8 @@
      <li>quantité en stock du produit : {{ product.quantityInStock }}</li>
      <li>prix du produit : {{ (product.price|price) }}</li>
      <li>
-         <img src="/build/images/{{ product.imageName }}">
+          {# trouve pas image #}
+         <img src="/images/{{ product.imageName }}">
      </li>
      <li>ajouté au catalogue le : {{ (product.createdAt|dateFr) }}</li>
     <li>
