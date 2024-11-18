@@ -1,21 +1,18 @@
 {# Rôle> fiche d'un produit <Rôle #}
-<ul>
-    <li>nom du produit : {{ product.name }}</li>
-    {% if product.description is not empty %}
-    <li>description du produit : {{ product.description }}</li>
-    {% endif %}
-     <li>quantité en stock du produit : {{ product.quantityInStock }}</li>
-     <li>prix du produit : {{ (product.price|price) }}</li>
-     <li>
-          {# trouve pas image #}
-         <img src="/images/{{ product.imageName }}">
-     </li>
-     <li>ajouté au catalogue le : {{ (product.createdAt|dateFr) }}</li>
-    <li>
-        {% if products is not defined %}
-            <a href="{{ path('product_show_all') }}">Lister tous les produits</a>
-        {% else %}
-            <a href="{{ path('product_show', {id: product.id }) }}">Voir la fiche</a>
-        {% endif %}
-    </li>
-</ul>
+
+<div class="Card">
+    <div class="Card_image">
+        <img class="Image" src="/images/{{ product.imageName }}">
+    </div>
+    <div class="Card_info">
+        <p class="Card_title">
+            {{ product.name }}
+        </p>
+        <div class="Card_description">
+            {{ product.description }}
+        </div>
+        <p class="Card_price">
+            {{ product.price|price }}
+        </p>
+    </div>
+</div>
