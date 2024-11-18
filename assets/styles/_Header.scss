@@ -1,8 +1,18 @@
 .Header {
   height: 100px;
   background-color: $header-bg-color;
-  padding: $padding-base;
+  padding: $header-padding;
 
   display: flex;
   align-items: center;
+
+  &_brand {
+    // determine la taille du flex-item
+    flex-basis: $header-brand-width;
+    box-sizing: border-box;
+  }
+
+  &_banner {
+    flex-grow: 1;
+  }
 }
