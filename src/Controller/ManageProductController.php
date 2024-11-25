@@ -36,7 +36,7 @@ class ManageProductController extends AbstractController
         ]);
     }
 
-    #[Route('/manage/product/edit/{id}', name: 'manage_product_edit')]
+    #[Route('/manage/product/edit/{id}', name: 'manage_product_edit', requirements: ['id' => '\d+'])]
     public function edit(int $id, Product $product, ProductRepository $productRepository, Request $request, EntityManagerInterface $em): Response
     {
         $form = $this->createForm(ProductType::class, $product);
@@ -57,8 +57,27 @@ class ManageProductController extends AbstractController
             return $this->redirectToRoute('product_show', ['id' => $id]);
         }
 
-        return $this->renderForm('product/product_new.html.twig', [
+        return $this->render('product/product_new.html.twig', [
             'form' => $form,
+            'product' => $product,
+        ]);
+    }
+
+
+    #[Route('manage/product/delete/{id}', name: 'manage_product_delete', requirements: ['id' => '\d+'])]
+    public function delete(Product $product, EntityManagerInterface $em): Response {
+        $id = $product->getId();
+        $em->remove($product);
+        $em->flush();
+
+        $this->addFlash('success', "Le produit $id a été supprimé");
+        return $this->redirectToRoute('product_show_all');
+    }
+
+    #[Route('manage/product/delete-confirm/{id}', name: 'manage_product_delete_confirm', requirements: ['id' => '\d+'])]
+    public function deleteConfirm(Product $product): Response {
+        return $this->render('product/product_delete_confirm.html.twig', [
+            'product' => $product,
         ]);
     }
 }
