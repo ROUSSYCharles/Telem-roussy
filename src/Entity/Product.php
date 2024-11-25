@@ -41,8 +41,9 @@ class Product
    #[Assert\PositiveOrZero(message: 'La quantité doit être supérieure à zéro')]
     private ?int $quantityInStock;
 
-    /** @var float|null prix HT */
+    /** @var int|null prix HT */
     #[ORM\Column(type: 'integer')]
+    #[Assert\NotBlank(message: 'Le prix est obligatoire')]
     #[Assert\Positive(message: 'Le prix doit être strictement supérieur à zéro')]
     private ?int $price;
 

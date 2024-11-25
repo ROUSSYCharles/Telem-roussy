@@ -28,7 +28,7 @@
     </p>
     {% if is_only %}
         <div>
-            <a href="">Actions</a>
+            <a class="Button -link -reverse" href="{{ path('manage_product_edit', {'id': product.id} ) }}">Actions</a>
         </div>
     {% endif %}
     {{ element_end|raw }}
