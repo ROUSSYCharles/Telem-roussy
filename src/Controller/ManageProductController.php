@@ -26,6 +26,7 @@ class ManageProductController extends AbstractController
             $em->persist($product);
             $em->flush();
 
+            $this->addFlash('success', 'Le produit a été ajouté au catalogue');
             return $this->redirectToRoute('product_show_all');
         }
 
