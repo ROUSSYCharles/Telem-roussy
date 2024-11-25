@@ -30,7 +30,6 @@ class ProductType extends AbstractType
             ->add('price', TextType::class, [
                 'label' => 'Prix'
             ])
-            ->add('enregistrer', SubmitType::class)
         ;
     }
 
