@@ -1,28 +1,35 @@
 {# Rôle> fiche d'un produit <Rôle #}
 
 {% if products is defined %}
-    {% set elementStart = '<a class="Card_info" href="' ~ path("product_show", {id: product.id}) ~ '">' %}
-    {% set elementEnd = '</a>' %}
-    {% set cardIfNotOnly = '' %}
+    {% set element_start = '<a class="Card_info" href="' ~ path("product_show", {id: product.id}) ~ '">' %}
+    {% set element_end = '</a>' %}
+    {% set class_if_not_only = '' %}
+    {% set is_only = false %}
 {% else %}
-        {% set elementStart = '<div class="Card_info">' %}
-        {% set elementEnd = '</div>' %}
-        {% set cardIfNotOnly = '-only' %}
+    {% set element_start = '<div class="Card_info">' %}
+    {% set element_end = '</div>' %}
+    {% set class_if_not_only = '-only' %}
+    {% set is_only = true %}
 {% endif %}
 
-<div class="Card {{ cardIfNotOnly }}">
+<div class="Card {{ class_if_not_only }}">
     <div class="Card_image">
         <img class="Image" src="/images/{{ product.imageName }}">
     </div>
-    {{ elementStart|raw }}
-        <p class="Card_title">
-            {{ product.name }}
-        </p>
-        <div class="Card_description">
-            {{ product.description }}
+    {{ element_start|raw }}
+    <p class="Card_title">
+        {{ product.name }}
+    </p>
+    <div class="Card_description">
+        {{ product.description }}
+    </div>
+    <p class="Card_price">
+        {{ product.price|price }}
+    </p>
+    {% if is_only %}
+        <div>
+            <a href="">Actions</a>
         </div>
-        <p class="Card_price">
-            {{ product.price|price }}
-        </p>
-    {{ elementEnd|raw }}
+    {% endif %}
+    {{ element_end|raw }}
 </div>
