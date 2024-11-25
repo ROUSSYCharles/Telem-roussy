@@ -19,7 +19,7 @@ class ManageProductController extends AbstractController
         $form->add('Ajouter', SubmitType::class);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             dd($product);
         }
 

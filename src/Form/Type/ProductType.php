@@ -27,7 +27,7 @@ class ProductType extends AbstractType
                 'label' => 'Quantité en stock',
                 'required' => false,
             ])
-            ->add('price', TextType::class, [
+            ->add('price', IntegerType::class, [
                 'label' => 'Prix'
             ])
         ;
