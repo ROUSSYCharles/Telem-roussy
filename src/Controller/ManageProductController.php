@@ -37,13 +37,8 @@ class ManageProductController extends AbstractController
     }
 
     #[Route('/manage/product/edit/{id}', name: 'manage_product_edit')]
-    public function edit(int $id, ProductRepository $productRepository, Request $request, EntityManagerInterface $em): Response
+    public function edit(int $id, Product $product, ProductRepository $productRepository, Request $request, EntityManagerInterface $em): Response
     {
-        $product = $productRepository->find($id);
-        if (!$product) {
-            throw $this->createNotFoundException("Aucun produit avec l'id $id");
-        }
-
         $form = $this->createForm(ProductType::class, $product);
 
         $form->add('updateProduct', SubmitType::class, [
