@@ -27,9 +27,9 @@
 </aside>
 <main class="MainContent LayoutContainer_mainContent">
 
-    {% for messages in app.flashes %}
+    {% for label,messages in app.flashes %}
         {% for message in messages %}
-            <p>{{ message }}</p>
+            <p class="Message -{{ label }}">{{ message }}</p>
         {% endfor %}
     {% endfor %}
 
